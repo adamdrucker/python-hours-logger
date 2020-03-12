@@ -22,14 +22,28 @@ def check_date(i):
         return False
 
 
-def check_time(i):
-    # Check for valid time and format
-    # This needs to be adjusted, see scratch.py
+def check_time_format(i):
+    # This checks for the correct format as described below, returns bool
     try:
-        datetime.strptime(i, time_format)
+        dt = datetime.strptime(i, "%H:%M")
         return True
     except ValueError:
         return False
+
+
+def check_time(i):
+    checkt = check_time_format(i)
+    if not checkt:
+        # Checks returned bool from above
+        return False
+    else:
+        dt = datetime.strptime(i, "%H:%M")
+        d = dt.strftime("%H:%M")
+        # Checks that entered time and formatted time are the same
+        if i != d:
+            return False
+        else:
+            return True
 
 
 def lunch_hours(i):
@@ -59,7 +73,6 @@ def main():
               "format MM-DD-YYY.")
         iShiftDate = input("Enter the date of your shift: ")
         check_date(iShiftDate)
-        continue
 
     # Lunch time
     sLunch = input("Are these LUNCH hours? (Y/N): ")
@@ -68,26 +81,22 @@ def main():
     # Starting time prompt
     print("PLEASE BE ADVISED: Times must be formatted in 24-hour notation as HH:MM.")
     iInTime = input(f"Enter START time for {iShiftDate}: ")
-    check_time(iInTime)     # Call time check
 
     while not check_time(iInTime):
         print("Invalid entry, try again.")
         print("PLEASE BE ADVISED: Times must be formatted in 24-hour notation as HH:MM.")
         iInTime = input(f"Enter START time for {iShiftDate}: ")
         check_time(iInTime)
-        continue
 
     # Ending time prompt
     print("PLEASE BE ADVISED: Times must be formatted in 24-hour notation as HH:MM.")
     iOutTime = input(f"Enter END time for {iShiftDate}: ")
-    check_time(iOutTime)
 
     while not check_time(iOutTime):
         print("Invalid entry, try again.")
         print("PLEASE BE ADVISED: Times must be formatted in 24-hour notation as HH:MM.")
         iOutTime = input(f"Enter END time for {iShiftDate}: ")
         check_time(iOutTime)
-        continue
 
     # Work description
     sDescInput = input("Enter a description: ")
