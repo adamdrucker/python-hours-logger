@@ -2,7 +2,10 @@
 # // Script to log working hours //
 # ////////////////////////////////
 
+import os
+from os import path
 from datetime import datetime
+
 
 # Global variables
 date_format = "%m-%d-%Y"
@@ -53,6 +56,7 @@ def lunch_hours(i):
         return "MGHPCC/INTERN"
 
 
+# Determines .25 based decimal for final submission
 def minute_calc(x):
     if 0 <= x <= 14:
         return 0
@@ -143,7 +147,11 @@ def main():
     while CORRECT == "N":
         print("Please start over then.")
         break
+
     while CORRECT == "Y":
+        f = open(f"timecard_{d}.txt", "a+")
+        f.write(f"{sOutput}\n")
+        f.close()
         print("Do you want to submit another entry? ")
         break
 
@@ -152,9 +160,28 @@ def main():
         exit()
 
 
+# Begin
 print("Welcome to the Timecard Logging System.\n"
       "Here you will enter dates and times you've worked. Tasks should be separated and itemized.")
 START = input("Press [ENTER] to start or 'q' to quit. ")
+
+
+d = f"{datetime.now():%m-%d-%Y}"  # Date variable for filename
+dPath = "D:/Documents (HDD)/Script/Python/ts"  # Destination path
+cPath = os.getcwd()  # Gets current directory
+
+if cPath == dPath:
+    # Create text file in destination if non-existent
+    if not path.exists(f"{dPath}/timecard_{d}.txt"):
+        f = open(f"timecard_{d}.txt", "w+")
+        f.close()
+else:
+    # Change to destination if elsewhere
+    os.chdir(dPath)
+    # Create text file in destination if non-existent
+    if not path.exists(f"{dPath}/timecard_{d}.txt"):
+        f = open(f"timecard_{d}.txt", "w+")
+        f.close()
 
 while START != "q":
     main()
