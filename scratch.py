@@ -1,5 +1,8 @@
 from datetime import datetime
 import re
+import os
+import os.path
+from os import path
 
 # x = datetime.datetime.now()
 # print(x)
@@ -123,4 +126,28 @@ while not date_check(sDate):
 # minutes = minute_calc(min_calc)
 # total = f"{hours}.{minutes}"
 # print(total)
+
+d = f"{datetime.now():%m-%d-%Y}"
+
+dPath = "D:/Documents (HDD)/Script/Python/ts"
+cpath = os.getcwd()  # gets current directory
+if cpath == dPath:
+    if path.exists(f"{dPath}/timecard_{d}.txt"):
+        f = open(f"timecard_{d}.txt", "a+")
+        f.write("\nappending info")
+        f.close()
+    else:
+        f = open(f"timecard_{d}.txt", "w+")
+        f.write("testing this out, current directory")
+        f.close()
+else:
+    os.chdir(r"D:\Documents (HDD)\Script\Python\ts")
+    if path.exists(f"D:/Documents (HDD)/Script/Python/ts/timecard_{d}.txt"):
+        f = open(f"timecard_{d}.txt", "a+")
+        f.write("\nappending info")
+        f.close()
+    else:
+        f = open(f"timecard_{d}.txt", "w+")
+        f.write("testing this out, change directory")
+        f.close()
 
