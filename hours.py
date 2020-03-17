@@ -50,7 +50,7 @@ def lunch_hours(i):
     if i == "Y" or i == "y":
         return "LUNCH"
     elif i == "N" or i == "n":
-        return "MGHPCC"
+        return "MGHPCC/INTERN"
 
 
 def minute_calc(x):
@@ -138,5 +138,23 @@ def main():
     sOutput = f"{sName}|{iShiftDate} {iInTime}|{iShiftDate} {iOutTime}|{iTotal}|{sPaycode}|{sBillable}|{sEmergency}|{sDescInput}"
     print(sOutput)  # Output needs TOTAL after iOutTime
 
+    CORRECT = input("Is the preceding information correct? (Y/N) ").upper()
 
-main()
+    while CORRECT == "N":
+        print("Please start over then.")
+        break
+    while CORRECT == "Y":
+        print("Do you want to submit another entry? ")
+        break
+
+    START = input("Press [ENTER] to start or 'q' to quit. ")
+    if START == "q":
+        exit()
+
+
+print("Welcome to the Timecard Logging System.\n"
+      "Here you will enter dates and times you've worked. Tasks should be separated and itemized.")
+START = input("Press [ENTER] to start or 'q' to quit. ")
+
+while START != "q":
+    main()
