@@ -87,3 +87,40 @@ while not date_check(sDate):
 # time = f"{hour}:{minute}"
 # print(time)
 
+###
+
+# def minute_calc(x):
+#     if 0 <= x <= 14:
+#         return 0
+#     elif 15 <= x <= 29:
+#         return 25
+#     elif 30 <= x <= 44:
+#         return 50
+#     else:
+#         return 75
+#
+#
+# in_time = input("Enter start time: ")
+# out_time = input("Enter end time: ")
+#
+# split_in = in_time.split(":", 2)  # splits in_time into two strings separated by colon
+# in_hour = int(split_in[0])  # turns in hour into int
+# in_min = int(split_in[1])  # turns in min into int
+#
+# split_out = out_time.split(":", 2)
+# out_hour = int(split_out[0])
+# out_min = int(split_out[1])
+#
+# hours = out_hour - in_hour
+#
+# min_calc = out_min - in_min
+# if min_calc < 0:
+#     min_calc = min_calc + 60
+#
+# if in_min > out_min:
+#     hours = hours - 1
+#
+# minutes = minute_calc(min_calc)
+# total = f"{hours}.{minutes}"
+# print(total)
+
