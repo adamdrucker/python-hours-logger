@@ -140,7 +140,7 @@ def main():
 
     # Output
     sOutput = f"{sName}|{iShiftDate} {iInTime}|{iShiftDate} {iOutTime}|{iTotal}|{sPaycode}|{sBillable}|{sEmergency}|{sDescInput}"
-    print(sOutput)  # Output needs TOTAL after iOutTime
+    print(sOutput)
 
     CORRECT = input("Is the preceding information correct? (Y/N) ").upper()
 
@@ -190,9 +190,11 @@ localUser = os.environ['USER']
 dPath = f"/home/{localUser}/Documents/techsquare/Timecards"
 cPath = os.getcwd()  # Gets current directory
 
+# If desired destination path above doesn't exist,
+# create 'techsquare' & 'Timecards' directories
 if not path.exists(dPath):
-    os.chdir(f"/home/{localUser}/Documents/techsquare")
-    os.mkdir("Timecards")
+    os.chdir(f"/home/{localUser}/Documents")
+    os.makedirs("techsquare/Timecards")
 
 if cPath == dPath:
     # Create text file in destination if non-existent
