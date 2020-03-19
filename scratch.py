@@ -151,5 +151,7 @@ while not date_check(sDate):
 #         f.write("testing this out, change directory")
 #         f.close()
 
-localUser = os.environ['USER']
-print(localUser)
+# localUser = os.environ['USER']
+# print(localUser)
+
+os.makedirs("/home/adrucker/Documents/ts/tc")
