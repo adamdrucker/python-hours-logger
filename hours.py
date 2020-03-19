@@ -166,9 +166,32 @@ print("Welcome to the Timecard Logging System.\n"
 START = input("Press [ENTER] to start or 'q' to quit. ")
 
 # For Windows host systems #-------------------------------------
+# d = f"{datetime.now():%m-%d-%Y}"  # Date variable for filename
+# dPath = "D:/Documents (HDD)/Script/Python/ts"  # My local destination path
+# cPath = os.getcwd()  # Gets current directory
+#
+# if cPath == dPath:
+#     # Create text file in destination if non-existent
+#     if not path.exists(f"{dPath}/timecard_{d}.txt"):
+#         f = open(f"timecard_{d}.txt", "w+")
+#         f.close()
+# else:
+#     # Change to destination if elsewhere
+#     os.chdir(dPath)
+#     # Create text file in destination if non-existent
+#     if not path.exists(f"{dPath}/timecard_{d}.txt"):
+#         f = open(f"timecard_{d}.txt", "w+")
+#         f.close()
+# For Windows host systems #-------------------------------------
+
+# For Linux host systems #-------------------------------------
 d = f"{datetime.now():%m-%d-%Y}"  # Date variable for filename
-dPath = "D:/Documents (HDD)/Script/Python/ts"  # My local destination path
-cPath = os.getcwd()  # Gets current directory
+dPath = "/home/adrucker/Documents/techsquare/Timecards"
+cPath = os.getcwd() # Gets current directory
+
+if not path.exists(dPath):
+    os.chdir("/home/adrucker/Documents/techsquare")
+    os.mkdir("Timecards")
 
 if cPath == dPath:
     # Create text file in destination if non-existent
@@ -182,7 +205,7 @@ else:
     if not path.exists(f"{dPath}/timecard_{d}.txt"):
         f = open(f"timecard_{d}.txt", "w+")
         f.close()
-# For Windows host systems #-------------------------------------
+# For Linux host systems #-------------------------------------
 
 while START != "q":
     main()
