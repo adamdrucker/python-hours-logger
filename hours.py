@@ -186,11 +186,12 @@ START = input("Press [ENTER] to start or 'q' to quit. ")
 
 # For Linux host systems #-------------------------------------
 d = f"{datetime.now():%m-%d-%Y}"  # Date variable for filename
-dPath = "/home/adrucker/Documents/techsquare/Timecards"
-cPath = os.getcwd() # Gets current directory
+localUser = os.environ['USER']
+dPath = f"/home/{localUser}/Documents/techsquare/Timecards"
+cPath = os.getcwd()  # Gets current directory
 
 if not path.exists(dPath):
-    os.chdir("/home/adrucker/Documents/techsquare")
+    os.chdir(f"/home/{localUser}/Documents/techsquare")
     os.mkdir("Timecards")
 
 if cPath == dPath:
