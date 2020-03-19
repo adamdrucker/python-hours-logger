@@ -165,9 +165,9 @@ print("Welcome to the Timecard Logging System.\n"
       "Here you will enter dates and times you've worked. Tasks should be separated and itemized.")
 START = input("Press [ENTER] to start or 'q' to quit. ")
 
-
+# For Windows host systems #-------------------------------------
 d = f"{datetime.now():%m-%d-%Y}"  # Date variable for filename
-dPath = "D:/Documents (HDD)/Script/Python/ts"  # Destination path
+dPath = "D:/Documents (HDD)/Script/Python/ts"  # My local destination path
 cPath = os.getcwd()  # Gets current directory
 
 if cPath == dPath:
@@ -182,6 +182,7 @@ else:
     if not path.exists(f"{dPath}/timecard_{d}.txt"):
         f = open(f"timecard_{d}.txt", "w+")
         f.close()
+# For Windows host systems #-------------------------------------
 
 while START != "q":
     main()
