@@ -52,10 +52,10 @@ def check_time(i):
 def time_split(x):
     splist = []
     split = x.split(":", 2)
-    hour = split[0]
-    min = split[1]
-    splist.append(hour)
-    splist.append(min)
+    sphour = split[0]
+    spmin = split[1]
+    splist.append(sphour)
+    splist.append(spmin)
     return splist
 
 
