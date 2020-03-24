@@ -103,9 +103,31 @@ while not date_check(sDate):
 #         return 75
 #
 #
-# in_time = input("Enter start time: ")
-# out_time = input("Enter end time: ")
-#
+
+
+def time_split(x):
+    splist = []
+    split = x.split(":", 2)
+    hour = split[0]
+    min = split[1]
+    splist.append(hour)
+    splist.append(min)
+    return splist
+
+
+in_time = input("Enter start time: ")
+out_time = input("Enter end time: ")
+
+in_hour = ((time_split(in_time))[0])
+in_min = ((time_split(in_time))[1])
+out_hour = ((time_split(out_time))[0])
+out_min = ((time_split(out_time))[1])
+
+print(f"In hour: {in_hour}\n"
+      f"In min: {in_min}\n"
+      f"Out hour: {out_hour}\n"
+      f"Out min: {out_min}")
+
 # split_in = in_time.split(":", 2)  # splits in_time into two strings separated by colon
 # in_hour = int(split_in[0])  # turns in hour into int
 # in_min = int(split_in[1])  # turns in min into int
@@ -113,19 +135,8 @@ while not date_check(sDate):
 # split_out = out_time.split(":", 2)
 # out_hour = int(split_out[0])
 # out_min = int(split_out[1])
-#
-# hours = out_hour - in_hour
-#
-# min_calc = out_min - in_min
-# if min_calc < 0:
-#     min_calc = min_calc + 60
-#
-# if in_min > out_min:
-#     hours = hours - 1
-#
-# minutes = minute_calc(min_calc)
-# total = f"{hours}.{minutes}"
-# print(total)
+
+
 
 # d = f"{datetime.now():%m-%d-%Y}"
 #
@@ -154,4 +165,4 @@ while not date_check(sDate):
 # localUser = os.environ['USER']
 # print(localUser)
 
-os.makedirs("/home/adrucker/Documents/ts/tc")
+# os.makedirs("/home/adrucker/Documents/ts/tc")
