@@ -48,6 +48,17 @@ def check_time(i):
             return True
 
 
+# Splits up hour/minute from time inputs
+def time_split(x):
+    splist = []
+    split = x.split(":", 2)
+    hour = split[0]
+    min = split[1]
+    splist.append(hour)
+    splist.append(min)
+    return splist
+
+
 # Determine paycode variable
 def lunch_hours(i):
     if i == "Y" or i == "y":
@@ -103,9 +114,8 @@ def main():
         check_time(iInTime)
 
     # Split in-time into hours/minutes
-    spInTime = iInTime.split(":", 2)
-    iInHour = int(spInTime[0])
-    iInMin = int(spInTime[1])
+    iInHour = int((time_split(iInTime))[0])
+    iInMin = int((time_split(iInTime))[1])
 
     # Ending time prompt
     print("PLEASE BE ADVISED: Times must be formatted in 24-hour notation as HH:MM.")
@@ -118,9 +128,8 @@ def main():
         check_time(iOutTime)
 
     # Split out-time into hours/minutes
-    spOutTime = iOutTime.split(":", 2)
-    iOutHour = int(spOutTime[0])
-    iOutMin = int(spOutTime[1])
+    iOutHour = int((time_split(iOutTime))[0])
+    iOutMin = int((time_split(iOutTime))[1])
 
     # Calculations
     iHours = iOutHour - iInHour
@@ -165,7 +174,7 @@ print("Welcome to the Timecard Logging System.\n"
       "Here you will enter dates and times you've worked. Tasks should be separated and itemized.")
 START = input("Press [ENTER] to start or 'q' to quit. ")
 
-# For Windows host systems #-------------------------------------
+# START Windows host systems #-------------------------------------
 # d = f"{datetime.now():%m-%d-%Y}"  # Date variable for filename
 # dPath = "D:/Documents (HDD)/Script/Python/ts"  # My local destination path
 # cPath = os.getcwd()  # Gets current directory
@@ -182,9 +191,9 @@ START = input("Press [ENTER] to start or 'q' to quit. ")
 #     if not path.exists(f"{dPath}/timecard_{d}.txt"):
 #         f = open(f"timecard_{d}.txt", "w+")
 #         f.close()
-# For Windows host systems #-------------------------------------
+# END Windows host systems #-------------------------------------
 
-# For Linux host systems #-------------------------------------
+# START Linux host systems #-------------------------------------
 d = f"{datetime.now():%m-%d-%Y}"  # Date variable for filename
 localUser = os.environ['USER']
 dPath = f"/home/{localUser}/Documents/techsquare/Timecards"
@@ -208,7 +217,7 @@ else:
     if not path.exists(f"{dPath}/timecard_{d}.txt"):
         f = open(f"timecard_{d}.txt", "w+")
         f.close()
-# For Linux host systems #-------------------------------------
+# END Linux host systems #-------------------------------------
 
 while START != "q":
     main()
